@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.fenlei.mapper.DBExtractEntityMapper">
+  <resultMap id="BaseResultMap" type="com.fc.fenlei.entity.DBExtractEntity">
+    <id column="c_id" jdbcType="INTEGER" property="cId" />
+    <result column="c_age" jdbcType="INTEGER" property="cAge" />
+    <result column="c_industry" jdbcType="VARCHAR" property="cIndustry" />
+    <result column="c_region" jdbcType="VARCHAR" property="cRegion" />
+    <result column="c_controller_type" jdbcType="VARCHAR" property="cControllerType" />
+    <result column="c_controller_shareholding_ratio" jdbcType="VARCHAR" property="cControllerShareholdingRatio" />
+    <result column="c_registered_capital" jdbcType="INTEGER" property="cRegisteredCapital" />
+    <result column="c_enterprise_type" jdbcType="VARCHAR" property="cEnterpriseType" />
+    <result column="c_creativity" jdbcType="INTEGER" property="cCreativity" />
+    <result column="c_equity_ratio" jdbcType="DOUBLE" property="cEquityRatio" />
+    <result column="c_net_profit_rate" jdbcType="DOUBLE" property="cNetProfitRate" />
+    <result column="c_roe" jdbcType="DOUBLE" property="cRoe" />
+    <result column="c_total_growth_rate" jdbcType="DOUBLE" property="cTotalGrowthRate" />
+    <result column="c_total_return" jdbcType="DOUBLE" property="cTotalReturn" />
+    <result column="c_noperating_proportion" jdbcType="DOUBLE" property="cNoperatingProportion" />
+    <result column="c_operatin_average_growth_rate" jdbcType="DOUBLE" property="cOperatinAverageGrowthRate" />
+    <result column="c_operating_growth_rate" jdbcType="DOUBLE" property="cOperatingGrowthRate" />
+    <result column="c_assets_and_liabilities" jdbcType="DOUBLE" property="cAssetsAndLiabilities" />
+    <result column="c_capital_average_growth_rate" jdbcType="DOUBLE" property="cCapitalAverageGrowthRate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    c_id, c_age, c_industry, c_region, c_controller_type, c_controller_shareholding_ratio, 
+    c_registered_capital, c_enterprise_type, c_creativity, c_equity_ratio, c_net_profit_rate, 
+    c_roe, c_total_growth_rate, c_total_return, c_noperating_proportion, c_operatin_average_growth_rate, 
+    c_operating_growth_rate, c_assets_and_liabilities, c_capital_average_growth_rate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from db_extract
+    where c_id = #{cId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from db_extract
+    where c_id = #{cId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fc.fenlei.entity.DBExtractEntity">
+    insert into db_extract (c_id, c_age, c_industry, 
+      c_region, c_controller_type, c_controller_shareholding_ratio, 
+      c_registered_capital, c_enterprise_type, c_creativity, 
+      c_equity_ratio, c_net_profit_rate, c_roe, 
+      c_total_growth_rate, c_total_return, c_noperating_proportion, 
+      c_operatin_average_growth_rate, c_operating_growth_rate, 
+      c_assets_and_liabilities, c_capital_average_growth_rate
+      )
+    values (#{cId,jdbcType=INTEGER}, #{cAge,jdbcType=INTEGER}, #{cIndustry,jdbcType=VARCHAR}, 
+      #{cRegion,jdbcType=VARCHAR}, #{cControllerType,jdbcType=VARCHAR}, #{cControllerShareholdingRatio,jdbcType=VARCHAR}, 
+      #{cRegisteredCapital,jdbcType=INTEGER}, #{cEnterpriseType,jdbcType=VARCHAR}, #{cCreativity,jdbcType=INTEGER}, 
+      #{cEquityRatio,jdbcType=DOUBLE}, #{cNetProfitRate,jdbcType=DOUBLE}, #{cRoe,jdbcType=DOUBLE}, 
+      #{cTotalGrowthRate,jdbcType=DOUBLE}, #{cTotalReturn,jdbcType=DOUBLE}, #{cNoperatingProportion,jdbcType=DOUBLE}, 
+      #{cOperatinAverageGrowthRate,jdbcType=DOUBLE}, #{cOperatingGrowthRate,jdbcType=DOUBLE}, 
+      #{cAssetsAndLiabilities,jdbcType=DOUBLE}, #{cCapitalAverageGrowthRate,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fc.fenlei.entity.DBExtractEntity">
+    insert into db_extract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="cAge != null">
+        c_age,
+      </if>
+      <if test="cIndustry != null">
+        c_industry,
+      </if>
+      <if test="cRegion != null">
+        c_region,
+      </if>
+      <if test="cControllerType != null">
+        c_controller_type,
+      </if>
+      <if test="cControllerShareholdingRatio != null">
+        c_controller_shareholding_ratio,
+      </if>
+      <if test="cRegisteredCapital != null">
+        c_registered_capital,
+      </if>
+      <if test="cEnterpriseType != null">
+        c_enterprise_type,
+      </if>
+      <if test="cCreativity != null">
+        c_creativity,
+      </if>
+      <if test="cEquityRatio != null">
+        c_equity_ratio,
+      </if>
+      <if test="cNetProfitRate != null">
+        c_net_profit_rate,
+      </if>
+      <if test="cRoe != null">
+        c_roe,
+      </if>
+      <if test="cTotalGrowthRate != null">
+        c_total_growth_rate,
+      </if>
+      <if test="cTotalReturn != null">
+        c_total_return,
+      </if>
+      <if test="cNoperatingProportion != null">
+        c_noperating_proportion,
+      </if>
+      <if test="cOperatinAverageGrowthRate != null">
+        c_operatin_average_growth_rate,
+      </if>
+      <if test="cOperatingGrowthRate != null">
+        c_operating_growth_rate,
+      </if>
+      <if test="cAssetsAndLiabilities != null">
+        c_assets_and_liabilities,
+      </if>
+      <if test="cCapitalAverageGrowthRate != null">
+        c_capital_average_growth_rate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cAge != null">
+        #{cAge,jdbcType=INTEGER},
+      </if>
+      <if test="cIndustry != null">
+        #{cIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="cRegion != null">
+        #{cRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="cControllerType != null">
+        #{cControllerType,jdbcType=VARCHAR},
+      </if>
+      <if test="cControllerShareholdingRatio != null">
+        #{cControllerShareholdingRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="cRegisteredCapital != null">
+        #{cRegisteredCapital,jdbcType=INTEGER},
+      </if>
+      <if test="cEnterpriseType != null">
+        #{cEnterpriseType,jdbcType=VARCHAR},
+      </if>
+      <if test="cCreativity != null">
+        #{cCreativity,jdbcType=INTEGER},
+      </if>
+      <if test="cEquityRatio != null">
+        #{cEquityRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="cNetProfitRate != null">
+        #{cNetProfitRate,jdbcType=DOUBLE},
+      </if>
+      <if test="cRoe != null">
+        #{cRoe,jdbcType=DOUBLE},
+      </if>
+      <if test="cTotalGrowthRate != null">
+        #{cTotalGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="cTotalReturn != null">
+        #{cTotalReturn,jdbcType=DOUBLE},
+      </if>
+      <if test="cNoperatingProportion != null">
+        #{cNoperatingProportion,jdbcType=DOUBLE},
+      </if>
+      <if test="cOperatinAverageGrowthRate != null">
+        #{cOperatinAverageGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="cOperatingGrowthRate != null">
+        #{cOperatingGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="cAssetsAndLiabilities != null">
+        #{cAssetsAndLiabilities,jdbcType=DOUBLE},
+      </if>
+      <if test="cCapitalAverageGrowthRate != null">
+        #{cCapitalAverageGrowthRate,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fc.fenlei.entity.DBExtractEntity">
+    update db_extract
+    <set>
+      <if test="cAge != null">
+        c_age = #{cAge,jdbcType=INTEGER},
+      </if>
+      <if test="cIndustry != null">
+        c_industry = #{cIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="cRegion != null">
+        c_region = #{cRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="cControllerType != null">
+        c_controller_type = #{cControllerType,jdbcType=VARCHAR},
+      </if>
+      <if test="cControllerShareholdingRatio != null">
+        c_controller_shareholding_ratio = #{cControllerShareholdingRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="cRegisteredCapital != null">
+        c_registered_capital = #{cRegisteredCapital,jdbcType=INTEGER},
+      </if>
+      <if test="cEnterpriseType != null">
+        c_enterprise_type = #{cEnterpriseType,jdbcType=VARCHAR},
+      </if>
+      <if test="cCreativity != null">
+        c_creativity = #{cCreativity,jdbcType=INTEGER},
+      </if>
+      <if test="cEquityRatio != null">
+        c_equity_ratio = #{cEquityRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="cNetProfitRate != null">
+        c_net_profit_rate = #{cNetProfitRate,jdbcType=DOUBLE},
+      </if>
+      <if test="cRoe != null">
+        c_roe = #{cRoe,jdbcType=DOUBLE},
+      </if>
+      <if test="cTotalGrowthRate != null">
+        c_total_growth_rate = #{cTotalGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="cTotalReturn != null">
+        c_total_return = #{cTotalReturn,jdbcType=DOUBLE},
+      </if>
+      <if test="cNoperatingProportion != null">
+        c_noperating_proportion = #{cNoperatingProportion,jdbcType=DOUBLE},
+      </if>
+      <if test="cOperatinAverageGrowthRate != null">
+        c_operatin_average_growth_rate = #{cOperatinAverageGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="cOperatingGrowthRate != null">
+        c_operating_growth_rate = #{cOperatingGrowthRate,jdbcType=DOUBLE},
+      </if>
+      <if test="cAssetsAndLiabilities != null">
+        c_assets_and_liabilities = #{cAssetsAndLiabilities,jdbcType=DOUBLE},
+      </if>
+      <if test="cCapitalAverageGrowthRate != null">
+        c_capital_average_growth_rate = #{cCapitalAverageGrowthRate,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fc.fenlei.entity.DBExtractEntity">
+    update db_extract
+    set c_age = #{cAge,jdbcType=INTEGER},
+      c_industry = #{cIndustry,jdbcType=VARCHAR},
+      c_region = #{cRegion,jdbcType=VARCHAR},
+      c_controller_type = #{cControllerType,jdbcType=VARCHAR},
+      c_controller_shareholding_ratio = #{cControllerShareholdingRatio,jdbcType=VARCHAR},
+      c_registered_capital = #{cRegisteredCapital,jdbcType=INTEGER},
+      c_enterprise_type = #{cEnterpriseType,jdbcType=VARCHAR},
+      c_creativity = #{cCreativity,jdbcType=INTEGER},
+      c_equity_ratio = #{cEquityRatio,jdbcType=DOUBLE},
+      c_net_profit_rate = #{cNetProfitRate,jdbcType=DOUBLE},
+      c_roe = #{cRoe,jdbcType=DOUBLE},
+      c_total_growth_rate = #{cTotalGrowthRate,jdbcType=DOUBLE},
+      c_total_return = #{cTotalReturn,jdbcType=DOUBLE},
+      c_noperating_proportion = #{cNoperatingProportion,jdbcType=DOUBLE},
+      c_operatin_average_growth_rate = #{cOperatinAverageGrowthRate,jdbcType=DOUBLE},
+      c_operating_growth_rate = #{cOperatingGrowthRate,jdbcType=DOUBLE},
+      c_assets_and_liabilities = #{cAssetsAndLiabilities,jdbcType=DOUBLE},
+      c_capital_average_growth_rate = #{cCapitalAverageGrowthRate,jdbcType=DOUBLE}
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.fenlei.mapper.DBYearReportEntityMapper">
+  <resultMap id="BaseResultMap" type="com.fc.fenlei.entity.DBYearReportEntity">
+    <id column="c_id" jdbcType="INTEGER" property="cId" />
+    <id column="c_year" jdbcType="VARCHAR" property="cYear" />
+    <result column="c_emnum" jdbcType="INTEGER" property="cEmnum" />
+    <result column="c_total_assets" jdbcType="INTEGER" property="cTotalAssets" />
+    <result column="c_total_liabilities" jdbcType="INTEGER" property="cTotalLiabilities" />
+    <result column="c_total_income" jdbcType="INTEGER" property="cTotalIncome" />
+    <result column="c_main_income" jdbcType="DOUBLE" property="cMainIncome" />
+    <result column="c_total_profit" jdbcType="DOUBLE" property="cTotalProfit" />
+    <result column="c_net_profit" jdbcType="DOUBLE" property="cNetProfit" />
+    <result column="c_total_tax" jdbcType="DOUBLE" property="cTotalTax" />
+    <result column="c_total_equity" jdbcType="INTEGER" property="cTotalEquity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    c_id, c_year, c_emnum, c_total_assets, c_total_liabilities, c_total_income, c_main_income, 
+    c_total_profit, c_net_profit, c_total_tax, c_total_equity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.fc.fenlei.entity.DBYearReportEntityKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from db_year_report
+    where c_id = #{cId,jdbcType=INTEGER}
+      and c_year = #{cYear,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.fc.fenlei.entity.DBYearReportEntityKey">
+    delete from db_year_report
+    where c_id = #{cId,jdbcType=INTEGER}
+      and c_year = #{cYear,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fc.fenlei.entity.DBYearReportEntity">
+    insert into db_year_report (c_id, c_year, c_emnum, 
+      c_total_assets, c_total_liabilities, c_total_income, 
+      c_main_income, c_total_profit, c_net_profit, 
+      c_total_tax, c_total_equity)
+    values (#{cId,jdbcType=INTEGER}, #{cYear,jdbcType=VARCHAR}, #{cEmnum,jdbcType=INTEGER}, 
+      #{cTotalAssets,jdbcType=INTEGER}, #{cTotalLiabilities,jdbcType=INTEGER}, #{cTotalIncome,jdbcType=INTEGER}, 
+      #{cMainIncome,jdbcType=DOUBLE}, #{cTotalProfit,jdbcType=DOUBLE}, #{cNetProfit,jdbcType=DOUBLE}, 
+      #{cTotalTax,jdbcType=DOUBLE}, #{cTotalEquity,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fc.fenlei.entity.DBYearReportEntity">
+    insert into db_year_report
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="cYear != null">
+        c_year,
+      </if>
+      <if test="cEmnum != null">
+        c_emnum,
+      </if>
+      <if test="cTotalAssets != null">
+        c_total_assets,
+      </if>
+      <if test="cTotalLiabilities != null">
+        c_total_liabilities,
+      </if>
+      <if test="cTotalIncome != null">
+        c_total_income,
+      </if>
+      <if test="cMainIncome != null">
+        c_main_income,
+      </if>
+      <if test="cTotalProfit != null">
+        c_total_profit,
+      </if>
+      <if test="cNetProfit != null">
+        c_net_profit,
+      </if>
+      <if test="cTotalTax != null">
+        c_total_tax,
+      </if>
+      <if test="cTotalEquity != null">
+        c_total_equity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cYear != null">
+        #{cYear,jdbcType=VARCHAR},
+      </if>
+      <if test="cEmnum != null">
+        #{cEmnum,jdbcType=INTEGER},
+      </if>
+      <if test="cTotalAssets != null">
+        #{cTotalAssets,jdbcType=INTEGER},
+      </if>
+      <if test="cTotalLiabilities != null">
+        #{cTotalLiabilities,jdbcType=INTEGER},
+      </if>
+      <if test="cTotalIncome != null">
+        #{cTotalIncome,jdbcType=INTEGER},
+      </if>
+      <if test="cMainIncome != null">
+        #{cMainIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="cTotalProfit != null">
+        #{cTotalProfit,jdbcType=DOUBLE},
+      </if>
+      <if test="cNetProfit != null">
+        #{cNetProfit,jdbcType=DOUBLE},
+      </if>
+      <if test="cTotalTax != null">
+        #{cTotalTax,jdbcType=DOUBLE},
+      </if>
+      <if test="cTotalEquity != null">
+        #{cTotalEquity,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fc.fenlei.entity.DBYearReportEntity">
+    update db_year_report
+    <set>
+      <if test="cEmnum != null">
+        c_emnum = #{cEmnum,jdbcType=INTEGER},
+      </if>
+      <if test="cTotalAssets != null">
+        c_total_assets = #{cTotalAssets,jdbcType=INTEGER},
+      </if>
+      <if test="cTotalLiabilities != null">
+        c_total_liabilities = #{cTotalLiabilities,jdbcType=INTEGER},
+      </if>
+      <if test="cTotalIncome != null">
+        c_total_income = #{cTotalIncome,jdbcType=INTEGER},
+      </if>
+      <if test="cMainIncome != null">
+        c_main_income = #{cMainIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="cTotalProfit != null">
+        c_total_profit = #{cTotalProfit,jdbcType=DOUBLE},
+      </if>
+      <if test="cNetProfit != null">
+        c_net_profit = #{cNetProfit,jdbcType=DOUBLE},
+      </if>
+      <if test="cTotalTax != null">
+        c_total_tax = #{cTotalTax,jdbcType=DOUBLE},
+      </if>
+      <if test="cTotalEquity != null">
+        c_total_equity = #{cTotalEquity,jdbcType=INTEGER},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=INTEGER}
+      and c_year = #{cYear,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fc.fenlei.entity.DBYearReportEntity">
+    update db_year_report
+    set c_emnum = #{cEmnum,jdbcType=INTEGER},
+      c_total_assets = #{cTotalAssets,jdbcType=INTEGER},
+      c_total_liabilities = #{cTotalLiabilities,jdbcType=INTEGER},
+      c_total_income = #{cTotalIncome,jdbcType=INTEGER},
+      c_main_income = #{cMainIncome,jdbcType=DOUBLE},
+      c_total_profit = #{cTotalProfit,jdbcType=DOUBLE},
+      c_net_profit = #{cNetProfit,jdbcType=DOUBLE},
+      c_total_tax = #{cTotalTax,jdbcType=DOUBLE},
+      c_total_equity = #{cTotalEquity,jdbcType=INTEGER}
+    where c_id = #{cId,jdbcType=INTEGER}
+      and c_year = #{cYear,jdbcType=VARCHAR}
+  </update>
+</mapper>

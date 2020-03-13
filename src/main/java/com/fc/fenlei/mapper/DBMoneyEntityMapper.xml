@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fc.fenlei.mapper.DBMoneyEntityMapper">
+  <resultMap id="BaseResultMap" type="com.fc.fenlei.entity.DBMoneyEntity">
+    <id column="c_id" jdbcType="INTEGER" property="cId" />
+    <id column="c_year" jdbcType="VARCHAR" property="cYear" />
+    <result column="c_debt_financing_line" jdbcType="INTEGER" property="cDebtFinancingLine" />
+    <result column="c_debt_financing_cost" jdbcType="DOUBLE" property="cDebtFinancingCost" />
+    <result column="c_equity_financing_line" jdbcType="DOUBLE" property="cEquityFinancingLine" />
+    <result column="c_equity_financing_cost" jdbcType="DOUBLE" property="cEquityFinancingCost" />
+    <result column="c_internal_trade_line" jdbcType="DOUBLE" property="cInternalTradeLine" />
+    <result column="c_internal_trade_cost" jdbcType="DOUBLE" property="cInternalTradeCost" />
+    <result column="c_project_policy_line" jdbcType="DOUBLE" property="cProjectPolicyLine" />
+    <result column="c_project_policy_cost" jdbcType="DOUBLE" property="cProjectPolicyCost" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    c_id, c_year, c_debt_financing_line, c_debt_financing_cost, c_equity_financing_line, 
+    c_equity_financing_cost, c_internal_trade_line, c_internal_trade_cost, c_project_policy_line, 
+    c_project_policy_cost
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.fc.fenlei.entity.DBMoneyEntityKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from db_money
+    where c_id = #{cId,jdbcType=INTEGER}
+      and c_year = #{cYear,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.fc.fenlei.entity.DBMoneyEntityKey">
+    delete from db_money
+    where c_id = #{cId,jdbcType=INTEGER}
+      and c_year = #{cYear,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fc.fenlei.entity.DBMoneyEntity">
+    insert into db_money (c_id, c_year, c_debt_financing_line, 
+      c_debt_financing_cost, c_equity_financing_line, 
+      c_equity_financing_cost, c_internal_trade_line, 
+      c_internal_trade_cost, c_project_policy_line, c_project_policy_cost
+      )
+    values (#{cId,jdbcType=INTEGER}, #{cYear,jdbcType=VARCHAR}, #{cDebtFinancingLine,jdbcType=INTEGER}, 
+      #{cDebtFinancingCost,jdbcType=DOUBLE}, #{cEquityFinancingLine,jdbcType=DOUBLE}, 
+      #{cEquityFinancingCost,jdbcType=DOUBLE}, #{cInternalTradeLine,jdbcType=DOUBLE}, 
+      #{cInternalTradeCost,jdbcType=DOUBLE}, #{cProjectPolicyLine,jdbcType=DOUBLE}, #{cProjectPolicyCost,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fc.fenlei.entity.DBMoneyEntity">
+    insert into db_money
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="cYear != null">
+        c_year,
+      </if>
+      <if test="cDebtFinancingLine != null">
+        c_debt_financing_line,
+      </if>
+      <if test="cDebtFinancingCost != null">
+        c_debt_financing_cost,
+      </if>
+      <if test="cEquityFinancingLine != null">
+        c_equity_financing_line,
+      </if>
+      <if test="cEquityFinancingCost != null">
+        c_equity_financing_cost,
+      </if>
+      <if test="cInternalTradeLine != null">
+        c_internal_trade_line,
+      </if>
+      <if test="cInternalTradeCost != null">
+        c_internal_trade_cost,
+      </if>
+      <if test="cProjectPolicyLine != null">
+        c_project_policy_line,
+      </if>
+      <if test="cProjectPolicyCost != null">
+        c_project_policy_cost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cYear != null">
+        #{cYear,jdbcType=VARCHAR},
+      </if>
+      <if test="cDebtFinancingLine != null">
+        #{cDebtFinancingLine,jdbcType=INTEGER},
+      </if>
+      <if test="cDebtFinancingCost != null">
+        #{cDebtFinancingCost,jdbcType=DOUBLE},
+      </if>
+      <if test="cEquityFinancingLine != null">
+        #{cEquityFinancingLine,jdbcType=DOUBLE},
+      </if>
+      <if test="cEquityFinancingCost != null">
+        #{cEquityFinancingCost,jdbcType=DOUBLE},
+      </if>
+      <if test="cInternalTradeLine != null">
+        #{cInternalTradeLine,jdbcType=DOUBLE},
+      </if>
+      <if test="cInternalTradeCost != null">
+        #{cInternalTradeCost,jdbcType=DOUBLE},
+      </if>
+      <if test="cProjectPolicyLine != null">
+        #{cProjectPolicyLine,jdbcType=DOUBLE},
+      </if>
+      <if test="cProjectPolicyCost != null">
+        #{cProjectPolicyCost,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fc.fenlei.entity.DBMoneyEntity">
+    update db_money
+    <set>
+      <if test="cDebtFinancingLine != null">
+        c_debt_financing_line = #{cDebtFinancingLine,jdbcType=INTEGER},
+      </if>
+      <if test="cDebtFinancingCost != null">
+        c_debt_financing_cost = #{cDebtFinancingCost,jdbcType=DOUBLE},
+      </if>
+      <if test="cEquityFinancingLine != null">
+        c_equity_financing_line = #{cEquityFinancingLine,jdbcType=DOUBLE},
+      </if>
+      <if test="cEquityFinancingCost != null">
+        c_equity_financing_cost = #{cEquityFinancingCost,jdbcType=DOUBLE},
+      </if>
+      <if test="cInternalTradeLine != null">
+        c_internal_trade_line = #{cInternalTradeLine,jdbcType=DOUBLE},
+      </if>
+      <if test="cInternalTradeCost != null">
+        c_internal_trade_cost = #{cInternalTradeCost,jdbcType=DOUBLE},
+      </if>
+      <if test="cProjectPolicyLine != null">
+        c_project_policy_line = #{cProjectPolicyLine,jdbcType=DOUBLE},
+      </if>
+      <if test="cProjectPolicyCost != null">
+        c_project_policy_cost = #{cProjectPolicyCost,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=INTEGER}
+      and c_year = #{cYear,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fc.fenlei.entity.DBMoneyEntity">
+    update db_money
+    set c_debt_financing_line = #{cDebtFinancingLine,jdbcType=INTEGER},
+      c_debt_financing_cost = #{cDebtFinancingCost,jdbcType=DOUBLE},
+      c_equity_financing_line = #{cEquityFinancingLine,jdbcType=DOUBLE},
+      c_equity_financing_cost = #{cEquityFinancingCost,jdbcType=DOUBLE},
+      c_internal_trade_line = #{cInternalTradeLine,jdbcType=DOUBLE},
+      c_internal_trade_cost = #{cInternalTradeCost,jdbcType=DOUBLE},
+      c_project_policy_line = #{cProjectPolicyLine,jdbcType=DOUBLE},
+      c_project_policy_cost = #{cProjectPolicyCost,jdbcType=DOUBLE}
+    where c_id = #{cId,jdbcType=INTEGER}
+      and c_year = #{cYear,jdbcType=VARCHAR}
+  </update>
+</mapper>
